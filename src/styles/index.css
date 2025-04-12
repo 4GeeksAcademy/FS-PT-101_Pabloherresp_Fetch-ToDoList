@@ -1,11 +1,49 @@
-/* 
+.lista{
+    min-width: 500px;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+.papelera{
+    display: none;
+}
 
-*/
+.lista-item:hover .papelera{
+    display: block;
+}
+
+.box {
+    animation: wobble 0.2s ease infinite;
+}
+
+@keyframes wobble {
+    0%, 100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+
+    15% {
+        -webkit-transform: translateX(-5px) rotate(-5deg);
+        transform: translateX(-5px) rotate(-5deg);
+    }
+
+    30% {
+        -webkit-transform: translateX(calc(5px / 2)) rotate(5deg);
+        transform: translateX(calc(5px / 2)) rotate(5deg);
+    }
+
+    45% {
+        -webkit-transform: translateX(calc(-5px / 2)) rotate(calc(-5deg / 1.8));
+        transform: translateX(calc(-5px / 2)) rotate(calc(-5deg / 1.8));
+    }
+
+    60% {
+        -webkit-transform: translateX(calc(5px / 3.3)) rotate(calc(5deg / 3));
+        transform: translateX(calc(5px / 3.3)) rotate(calc(5deg / 3));
+    }
+
+    75% {
+        -webkit-transform: translateX(calc(-5px / 5.5)) rotate(calc(-5deg / 5));
+        transform: translateX(calc(-5px / 5.5)) rotate(calc(-5deg / 5));
+    }
+}
