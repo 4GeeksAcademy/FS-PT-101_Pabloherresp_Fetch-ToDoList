@@ -2,6 +2,7 @@ import React from "react";
 import {useState,useEffect,useRef} from "react";
 
 const USER_API = "https://playground.4geeks.com/todo/users/"
+const TODOS_API = "https://playground.4geeks.com/todo/todos/"
 
 const Home = () => {
 	//useState
@@ -50,7 +51,7 @@ const Home = () => {
 	const addTask = async (e) => {
 		e.preventDefault()
 		try {
-			const resp = await fetch(`https://playground.4geeks.com/todo/todos/${user}`,{
+			const resp = await fetch(TODOS_API + user,{
 				method: "POST",
 				headers: {"Content-Type": "application/json"},
 				body:JSON.stringify({
@@ -68,7 +69,7 @@ const Home = () => {
 
 	const toggleTaskStatus = async (id,is_done) => {
 		try {
-			const resp = await fetch(`https://playground.4geeks.com/todo/todos/${id}`,{
+			const resp = await fetch(TODOS_API + id,{
 				method: "PUT",
 				headers: {"Content-Type":"application/json"},
 				body: JSON.stringify({"is_done": !is_done})
@@ -87,7 +88,7 @@ const Home = () => {
 	
 	const deleteTask = async (id) => {
 		try {
-			const resp = await fetch("https://playground.4geeks.com/todo/todos/"+id, {method: "DELETE"})
+			const resp = await fetch(TODOS_API + id, {method: "DELETE"})
 			if(!resp.ok) throw new Error("Couldn't delete task -> " + resp.status)
 			getTodos(user)
 		} catch (error) {
@@ -97,7 +98,7 @@ const Home = () => {
 
 	const deleteUser = async (name) => {
 		try {
-			const resp = await fetch(`https://playground.4geeks.com/todo/users/${name}`, {
+			const resp = await fetch(USER_API + name, {
 				method: "DELETE"
 			})
 			if(!resp.ok) throw new Error("Couldn't delete user -> " + resp.status)
