@@ -1,6 +1,8 @@
 import React from "react";
 import {useState,useEffect,useRef} from "react";
 
+//documentación de la API: https://playground.4geeks.com/todo/docs#/User%20operations/read_users_users_get
+
 const USER_API = "https://playground.4geeks.com/todo/users/"
 const TODOS_API = "https://playground.4geeks.com/todo/todos/"
 
