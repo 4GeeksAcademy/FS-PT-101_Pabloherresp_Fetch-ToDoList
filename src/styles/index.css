@@ -2,12 +2,12 @@
     min-width: 500px;
 }
 
-.papelera{
-    display: none;
+.hoverIcon{
+    visibility: hidden
 }
 
-.lista-item:hover .papelera{
-    display: block;
+.lista-item:hover .hoverIcon{
+    visibility: visible
 }
 
 .box {

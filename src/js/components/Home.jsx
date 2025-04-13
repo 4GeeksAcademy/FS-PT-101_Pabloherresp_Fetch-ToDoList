@@ -135,41 +135,41 @@ const Home = () => {
 	},[list])
 
 	return (
-		<div className="text-white">
-			{(user ? 
-			<div className="container text-center">
-				<div className="d-flex">
-					<p className="mt-3  fs-4">User: {user}</p>
-					<button type="button" className="btn btn-info ms-auto my-3" onClick={()=>setUser("")}>Load Other User</button>
-					<button type="button" className="btn btn-danger ms-auto my-3" onClick={()=>deleteUser(user)}>Delete Current User</button>
-				</div>
-				<form onSubmit={(e)=>{addTask(e)}} className="mt-5 mb-2">
-					<input ref={ref} type="text" value={text} onChange={(e)=>setText(e.target.value)} placeholder="What needs to be done?" className="form-text form-control form-control-lg w-50 mx-auto" required/>
-					<input type="submit" value="" hidden/>
-				</form>
-				<ul className={boxClass + " lista mt-2 list-group list-group-flush d-inline-flex bg-transparent"}>
-					{list?.length > 0 ? list?.map((el)=>
-						<li className="lista-item d-flex justify-content-start align-items-center list-group-item fs-4 bg-transparent" key={el.id}>
-							<span className={"text-break me-auto "+(el.is_done ? "text-white-50 text-decoration-line-through":"text-white ")}>
-								{el.label}
-							</span>
-							<span className="papelera ms-3 text-white" onClick={e=>toggleTaskStatus(el.id,el.is_done)}>
+		(user ? 
+		<div className="container text-center text-white">
+			<div className="d-flex">
+				<p className="mt-3 fs-4">User: {user}</p>
+				<button type="button" className="btn btn-info ms-auto my-3" onClick={()=>setUser("")}>Load Other User</button>
+				<button type="button" className="btn btn-danger ms-3 my-3" onClick={()=>deleteUser(user)}>Delete Current User</button>
+			</div>
+			<form onSubmit={(e)=>{addTask(e)}} className="mt-5 mb-2">
+				<input ref={ref} type="text" value={text} onChange={(e)=>setText(e.target.value)} placeholder="What needs to be done?" className="form-text form-control form-control-lg w-50 mx-auto" required/>
+				<input type="submit" value="" hidden/>
+			</form>
+			<ul className={boxClass + " lista mt-2 list-group list-group-flush d-inline-flex bg-transparent"}>
+				{list?.length > 0 ? list?.map((el)=>
+					<li className="lista-item d-flex justify-content-start align-items-center list-group-item bg-transparent" key={el.id}>
+						<span className={"text-start text-break me-auto fs-5 " + (el.is_done ? "text-white-50 text-decoration-line-through":"text-white ")}>
+							{el.label}
+						</span>
+						<div className="ms-3 d-flex fs-4">
+							<span className="hoverIcon ms-3 text-white" onClick={e=>toggleTaskStatus(el.id,el.is_done)}>
 								<i className={"fa-solid " + (el.is_done ? "fa-x":"fa-check")}></i>
 							</span>
-							<span className="papelera ms-3 text-white" onClick={e=>editTask(el.id,el.label)}><i className="fa-solid fa-pencil"></i></span>
-							<span className="papelera ms-3 text-white" onClick={e=>deleteTask(el.id)}><i className="fa-solid fa-trash"></i></span>
-						</li>) : <li className="list-group-item fs-2 bg-transparent text-white" key="empty">There are no tasks, add some</li>}
-				</ul>
-			</div>
-			:
-			<div className="container text-center">
-				<form onSubmit={(e)=>changeUser(e)} className="mt-5 mb-2">
-					<input type="text" value={textName} onChange={(e)=>setTextName(e.target.value)} placeholder="Name of the user you wish to load or create" className="form-text form-control w-50 mx-auto" required/>
-					<input type="submit" value="" hidden/>
-				</form>
-			</div>
-			)}
+							<span className="hoverIcon ms-3 text-white" onClick={e=>editTask(el.id,el.label)}><i className="fa-solid fa-pencil"></i></span>
+							<span className="hoverIcon ms-3 text-white" onClick={e=>deleteTask(el.id)}><i className="fa-solid fa-trash"></i></span>
+						</div>
+					</li>) : <li className="list-group-item fs-2 bg-transparent text-white" key="empty">There are no tasks, add some</li>}
+			</ul>
 		</div>
+		:
+		<div className="container text-center">
+			<form onSubmit={(e)=>changeUser(e)} className="mt-5 mb-2">
+				<input type="text" value={textName} onChange={(e)=>setTextName(e.target.value)} placeholder="Name of the user you wish to load or create" className="form-text form-control w-50 mx-auto" required/>
+				<input type="submit" value="" hidden/>
+			</form>
+		</div>
+		)
 	);
 };
 
